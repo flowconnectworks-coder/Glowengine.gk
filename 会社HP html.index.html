@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社[会社名] | CREATOR AGENCY</title>
+    <style>
+        /* --- Base & Color Styles --- */
+        :root { 
+            --bg-color: #05070d; 
+            --text-color: #f5f5f5; 
+            --gradient: linear-gradient(135deg, #00e5ff 0%, #0072ff 100%);
+            --accent: #00e5ff;
+            --card-bg: #0e111a;
+        }
+        body { 
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif; 
+            margin: 0; 
+            background-color: var(--bg-color); 
+            background-image: 
+                radial-gradient(circle at 80% -20%, rgba(0, 229, 255, 0.15), transparent 50%),
+                radial-gradient(circle at -20% 80%, rgba(0, 114, 255, 0.15), transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-color); 
+            line-height: 1.8; 
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        
+        /* --- Layout --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
+        .section { padding: 120px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .section-title { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            letter-spacing: 0.1em; 
+            margin-bottom: 60px; 
+            text-transform: uppercase; 
+        }
+        .section-title span { 
+            display: block; 
+            font-size: 0.9rem; 
+            color: #666; 
+            font-weight: 400; 
+            margin-top: 5px; 
+            letter-spacing: 0.05em;
+        }
+
+        /* --- Header --- */
+        header { padding: 30px 0; position: absolute; width: 100%; top: 0; z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: bold; letter-spacing: 0.1em; }
+        
+        /* --- Hero --- */
+        .hero { height: 90vh; display: flex; align-items: center; position: relative;}
+        
+        /* ★ ここを大幅に変更しました ★ */
+        .hero-title { 
+            font-size: clamp(4rem, 10vw, 8rem); /* 以前よりかなり大きく */
+            font-weight: 900; 
+            line-height: 1.05; /* 文字が大きくても間延びしないように行間を少し詰める */
+            letter-spacing: 0.02em; 
+            margin: 0;
+        }
+        .hero-title .highlight {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        .hero-subtitle {
+            color: #aaa; 
+            margin-top: 40px; 
+            letter-spacing: 0.15em;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem); /* サブタイトルも少し大きく */
+            font-weight: bold;
+        }
+
+        /* --- Vision / 企業理念 --- */
+        .vision-container { display: flex; flex-direction: column; }
+        .vision-catch {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            letter-spacing: 0.05em;
+            border-left: 4px solid;
+            border-image: var(--gradient) 1;
+            padding-left: 30px;
+        }
+        .vision-text {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 2.2;
+            max-width: 800px;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- Core Business --- */
+        .production-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+        }
+        .production-info { flex: 1; min-width: 300px; }
+        .production-name { font-size: 2rem; font-weight: 800; margin-bottom: 15px; letter-spacing: 0.05em;}
+        .production-desc { color: #aaa; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.8; }
+        
+        .btn-view {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 15px 40px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            transition: all 0.4s ease;
+            border-radius: 50px; 
+        }
+        .btn-view:hover { 
+            background: var(--gradient); 
+            color: #fff; 
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+        }
+
+        .image-placeholder {
+            flex: 1; 
+            min-width: 250px; 
+            height: 250px; 
+            background: rgba(255, 255, 255, 0.05); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #555; 
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        /* --- Company Table --- */
+        .company-table { width: 100%; border-collapse: collapse; }
+        .company-table th, .company-table td { padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left; vertical-align: top;}
+        .company-table th { width: 30%; color: #888; font-weight: normal; }
+
+        /* --- Footer --- */
+        footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 0.1em; }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .vision-catch { padding-left: 20px; font-size: 1.5rem; }
+            .production-card { padding: 30px; }
+            .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
+            .company-table th { border: none; padding-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">COMPANY LOGO</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Rule The<br><span class="highlight">Internet.</span></h1>
+            <p class="hero-subtitle">インターネットの熱狂を、次の次元へ。</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container vision-container">
+            <h2 class="section-title">Vision<span>企業理念</span></h2>
+            
+            <h3 class="vision-catch">
+                個人の「好き」を、<br>
+                世界を動かすムーブメントへ。
+            </h3>
+            
+            <p class="vision-text">
+                誰もが発信者になれる時代。<br>
+                しかし、その才能を正しく社会に届け、継続的な価値を生み出すためには、確かな戦略とサポートが必要です。<br><br>
+                私たちは、インターネット活動を中心としたクリエイターの「やりたい」を形にするエージェンシーです。<br>
+                ただのマネジメントにとどまらず、個性が最も輝く場所を共に創り出し、企業とクリエイター、そしてファンを繋ぐ架け橋となります。<br><br>
+                常識にとらわれない発想で、新しいエンターテインメントの基準を創る。<br>
+                それが私たちの使命です。
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Business<span>事業内容</span></h2>
+            
+            <div class="production-card">
+                <div class="production-info">
+                    <div class="production-name">Koyoi Production</div>
+                    <p class="production-desc">
+                        自社で運営するストリーマー・ライバープロダクション。<br>
+                        次世代を担う個性豊かなクリエイターのマネジメントと、配信活動のトータルサポートを行っています。
+                    </p>
+                    <a href="https://flowconnectworks-coder.github.io/koyoi-production-official/" class="btn-view" target="_blank">View Official Site</a>
+                </div>
+                <div class="image-placeholder">
+                    [ Production Image ]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Company<span>会社概要</span></h2>
+            <table class="company-table">
+                <tr><th>Company Name</th><td>株式会社〇〇〇〇</td></tr>
+                <tr><th>CEO</th><td>〇〇 〇〇</td></tr>
+                <tr><th>Location</th><td>〒000-0000<br>東京都〇〇区〇〇 1-2-3</td></tr>
+                <tr><th>Contact</th><td>info@example.com</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Your Company Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
