@@ -9,26 +9,24 @@
            基本設定・カラーパレット
            ========================================= */
         :root { 
-            --bg-color: #05070d; /* 背景色：深い黒（青みあり） */
-            --text-color: #f5f5f5; /* 文字色：白に近いグレー */
-            /* グラデーション：シアン（水色）〜ブルー */
+            --bg-color: #05070d; 
+            --text-color: #f5f5f5; 
             --gradient: linear-gradient(135deg, #00e5ff 0%, #0072ff 100%);
-            --accent: #00e5ff; /* アクセントカラー：水色 */
-            --card-bg: #0e111a; /* カードの背景色 */
+            --accent: #00e5ff; 
+            --card-bg: #0e111a; 
         }
 
         body { 
             font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif; 
             margin: 0; 
             background-color: var(--bg-color); 
-            /* 背景にうっすらとした青い環境光（オーラ）を配置 */
             background-image: 
                 radial-gradient(circle at 80% -20%, rgba(0, 229, 255, 0.15), transparent 50%),
                 radial-gradient(circle at -20% 80%, rgba(0, 114, 255, 0.15), transparent 50%);
-            background-attachment: fixed; /* スクロールしても背景を固定 */
+            background-attachment: fixed; 
             color: var(--text-color); 
             line-height: 1.8; 
-            -webkit-font-smoothing: antialiased; /* 文字を滑らかに */
+            -webkit-font-smoothing: antialiased; 
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -40,7 +38,6 @@
         .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
         .section { padding: 120px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         
-        /* セクションの見出しデザイン */
         .section-title { 
             font-size: 2.5rem; 
             font-weight: 800; 
@@ -58,25 +55,24 @@
         }
 
         /* =========================================
-           ヘッダー（上部のロゴなど）
+           ヘッダー
            ========================================= */
         header { padding: 30px 0; position: absolute; width: 100%; top: 0; z-index: 100; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.2rem; font-weight: bold; letter-spacing: 0.1em; }
 
         /* =========================================
-           HEROセクション（一番上の巨大文字）
+           HEROセクション
            ========================================= */
         .hero { height: 90vh; display: flex; align-items: center; position: relative;}
         
         .hero-title { 
-            font-size: clamp(4rem, 10vw, 8rem); /* 画面サイズに応じて超巨大化 */
+            font-size: clamp(4rem, 10vw, 8rem); 
             font-weight: 900; 
             line-height: 1.05; 
             letter-spacing: 0.02em; 
             margin: 0;
         }
-        /* "Internet" の文字だけグラデーションにする */
         .hero-title .highlight {
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -101,7 +97,6 @@
             line-height: 1.5;
             margin-bottom: 40px;
             letter-spacing: 0.05em;
-            /* 左側の線をグラデーションにする */
             border-left: 4px solid;
             border-image: var(--gradient) 1;
             padding-left: 30px;
@@ -115,32 +110,28 @@
         }
 
         /* =========================================
-           BUSINESS（事業内容・事務所紹介）
-           ★ここが一番重要です（ロゴが光る！）★
+           BUSINESS（事業内容）
+           ★ここを調整しました★
            ========================================= */
         .production-card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 50px;
+            padding: 40px; /* ★余白を少し詰めました（50px→40px） */
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 50px;
+            gap: 40px;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
-            
-            /* ★光のエフェクトが枠からはみ出さないように隠す */
             overflow: hidden; 
-            /* ★中の要素の位置基準にする */
             position: relative; 
         }
         
-        .production-info { flex: 1; min-width: 300px; z-index: 2; /* 文字は光より手前 */ }
+        .production-info { flex: 1; min-width: 300px; z-index: 2; }
         .production-name { font-size: 2rem; font-weight: 800; margin-bottom: 15px; letter-spacing: 0.05em;}
         .production-desc { color: #aaa; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.8; }
         
-        /* 事務所サイトへ飛ぶボタンのデザイン */
         .btn-view {
             display: inline-block;
             border: 1px solid var(--accent);
@@ -156,59 +147,59 @@
             background: var(--gradient); 
             color: #fff; 
             border-color: transparent;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); /* ホバー時に光る */
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); 
         }
 
-      /* --- ★ロゴ周りの光るエフェクト設定（サイズ修正版）★ --- */
+        /* --- ★ロゴ周りの設定（サイズ調整版）★ --- */
         .production-image-container {
             flex: 1; 
             min-width: 250px; 
-            height: 450px; /* ★高さを広げました */
+            height: 350px; /* ★高さを350pxに縮めました（ちょうどいいサイズ） */
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            position: relative;
+            position: relative; 
             z-index: 1;
         }
 
-        /* ロゴの後ろに「光のオーラ」を作る */
+        /* ロゴの後ろの光 */
         .production-image-container::before {
             content: '';
             position: absolute;
             top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70%; height: 70%; /* 画像が大きくなったので光の範囲を少し調整 */
+            transform: translate(-50%, -50%); 
+            width: 70%; height: 70%; 
             background: radial-gradient(circle, rgba(120, 80, 255, 0.4) 0%, rgba(0, 229, 255, 0.2) 50%, transparent 70%);
-            filter: blur(50px); /* ぼかしを少し強く */
-            z-index: -1;
+            filter: blur(40px); 
+            z-index: -1; 
             opacity: 0.8;
         }
 
-        /* ロゴ画像自体の設定 */
+        /* ロゴ画像 */
         .production-logo-img {
-            max-width: 320px; /* ★画像を大きくしました */
+            max-width: 320px; /* ★ロゴ自体は大きくキープ */
             height: auto;
             position: relative;
             z-index: 2;
-            filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.5)); /* 発光も少し強く */
+            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.5));
         }
+
         /* =========================================
-           COMPANY（会社概要テーブル）
+           COMPANY（会社概要）
            ========================================= */
         .company-table { width: 100%; border-collapse: collapse; }
         .company-table th, .company-table td { padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left; vertical-align: top;}
         .company-table th { width: 30%; color: #888; font-weight: normal; }
 
         /* =========================================
-           フッター・スマホ対応
+           フッター
            ========================================= */
         footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 0.1em; }
 
-        /* スマホ画面（幅768px以下）用の調整 */
         @media (max-width: 768px) {
             .vision-catch { padding-left: 20px; font-size: 1.5rem; }
             .production-card { padding: 30px; gap: 30px; }
-            .production-image-container { height: 200px; } /* スマホでは少し小さく */
+            .production-image-container { height: 250px; } /* スマホ用調整 */
             .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
             .company-table th { border: none; padding-bottom: 0; }
         }
@@ -242,7 +233,7 @@
                 誰もが発信者になれる時代。<br>
                 しかし、その才能を正しく社会に届け、継続的な価値を生み出すためには、確かな戦略とサポートが必要です。<br><br>
                 私たちは、インターネット活動を中心としたクリエイターの「やりたい」を形にするエージェンシーです。<br>
-                ただのマネジメントにとどまらず、個性が最も輝く場所を共に創り出し、企業とクリエイター、そしてファンを繋ぐ架け橋となります。<br><br>
+                ただのマネジメントにとどまらず、戦略設計、案件獲得、ブランディング構築まで一気通貫で支援します<br><br>
                 常識にとらわれない発想で、新しいエンターテインメントの基準を創る。<br>
                 それが私たちの使命です。
             </p>
@@ -264,7 +255,7 @@
                 </div>
                 
                 <div class="production-image-container">
-                    <img src="./logo.png" alt="Koyoi Production Logo" class="production-logo-img">
+                    <img src="./logo.jpg" alt="Koyoi Production Logo" class="production-logo-img">
                 </div>
             </div>
         </div>
@@ -289,4 +280,3 @@
 
 </body>
 </html>
-
