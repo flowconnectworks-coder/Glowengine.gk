@@ -5,31 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlowEngine合同会社 | CREATOR AGENCY</title>
     <style>
-        /* --- Base & Color Styles --- */
+        /* =========================================
+           基本設定・カラーパレット
+           ========================================= */
         :root { 
-            --bg-color: #05070d; 
-            --text-color: #f5f5f5; 
+            --bg-color: #05070d; /* 背景色：深い黒（青みあり） */
+            --text-color: #f5f5f5; /* 文字色：白に近いグレー */
+            /* グラデーション：シアン（水色）〜ブルー */
             --gradient: linear-gradient(135deg, #00e5ff 0%, #0072ff 100%);
-            --accent: #00e5ff;
-            --card-bg: #0e111a;
+            --accent: #00e5ff; /* アクセントカラー：水色 */
+            --card-bg: #0e111a; /* カードの背景色 */
         }
+
         body { 
             font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif; 
             margin: 0; 
             background-color: var(--bg-color); 
+            /* 背景にうっすらとした青い環境光（オーラ）を配置 */
             background-image: 
                 radial-gradient(circle at 80% -20%, rgba(0, 229, 255, 0.15), transparent 50%),
                 radial-gradient(circle at -20% 80%, rgba(0, 114, 255, 0.15), transparent 50%);
-            background-attachment: fixed;
+            background-attachment: fixed; /* スクロールしても背景を固定 */
             color: var(--text-color); 
             line-height: 1.8; 
-            -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased; /* 文字を滑らかに */
         }
-        a { text-decoration: none; color: inherit; }
-        
-        /* --- Layout --- */
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* =========================================
+           レイアウト共通設定
+           ========================================= */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
         .section { padding: 120px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        /* セクションの見出しデザイン */
         .section-title { 
             font-size: 2.5rem; 
             font-weight: 800; 
@@ -43,25 +54,29 @@
             color: #666; 
             font-weight: 400; 
             margin-top: 5px; 
-            letter-spacing: 0.05em;
+            letter-spacing: 0.05em; 
         }
 
-        /* --- Header --- */
+        /* =========================================
+           ヘッダー（上部のロゴなど）
+           ========================================= */
         header { padding: 30px 0; position: absolute; width: 100%; top: 0; z-index: 100; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.2rem; font-weight: bold; letter-spacing: 0.1em; }
-        
-        /* --- Hero --- */
+
+        /* =========================================
+           HEROセクション（一番上の巨大文字）
+           ========================================= */
         .hero { height: 90vh; display: flex; align-items: center; position: relative;}
         
-        /* ★ ここを大幅に変更しました ★ */
         .hero-title { 
-            font-size: clamp(4rem, 10vw, 8rem); /* 以前よりかなり大きく */
+            font-size: clamp(4rem, 10vw, 8rem); /* 画面サイズに応じて超巨大化 */
             font-weight: 900; 
-            line-height: 1.05; /* 文字が大きくても間延びしないように行間を少し詰める */
+            line-height: 1.05; 
             letter-spacing: 0.02em; 
             margin: 0;
         }
+        /* "Internet" の文字だけグラデーションにする */
         .hero-title .highlight {
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -72,11 +87,13 @@
             color: #aaa; 
             margin-top: 40px; 
             letter-spacing: 0.15em;
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem); /* サブタイトルも少し大きく */
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem); 
             font-weight: bold;
         }
 
-        /* --- Vision / 企業理念 --- */
+        /* =========================================
+           VISION（企業理念）
+           ========================================= */
         .vision-container { display: flex; flex-direction: column; }
         .vision-catch {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -84,6 +101,7 @@
             line-height: 1.5;
             margin-bottom: 40px;
             letter-spacing: 0.05em;
+            /* 左側の線をグラデーションにする */
             border-left: 4px solid;
             border-image: var(--gradient) 1;
             padding-left: 30px;
@@ -96,7 +114,10 @@
             letter-spacing: 0.05em;
         }
 
-        /* --- Core Business --- */
+        /* =========================================
+           BUSINESS（事業内容・事務所紹介）
+           ★ここが一番重要です（ロゴが光る！）★
+           ========================================= */
         .production-card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -105,14 +126,21 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 50px;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+            
+            /* ★光のエフェクトが枠からはみ出さないように隠す */
+            overflow: hidden; 
+            /* ★中の要素の位置基準にする */
+            position: relative; 
         }
-        .production-info { flex: 1; min-width: 300px; }
+        
+        .production-info { flex: 1; min-width: 300px; z-index: 2; /* 文字は光より手前 */ }
         .production-name { font-size: 2rem; font-weight: 800; margin-bottom: 15px; letter-spacing: 0.05em;}
         .production-desc { color: #aaa; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.8; }
         
+        /* 事務所サイトへ飛ぶボタンのデザイン */
         .btn-view {
             display: inline-block;
             border: 1px solid var(--accent);
@@ -128,34 +156,64 @@
             background: var(--gradient); 
             color: #fff; 
             border-color: transparent;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); /* ホバー時に光る */
         }
 
-        .image-placeholder {
+        /* --- ★ロゴ周りの光るエフェクト設定★ --- */
+        .production-image-container {
             flex: 1; 
             min-width: 250px; 
-            height: 250px; 
-            background: rgba(255, 255, 255, 0.05); 
+            height: 300px; /* 高さ確保 */
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            color: #555; 
-            font-size: 0.9rem;
-            border-radius: 4px;
+            position: relative; /* オーラの基準点 */
+            z-index: 1;
         }
 
-        /* --- Company Table --- */
+        /* ロゴの後ろに「光のオーラ」を作る（疑似要素） */
+        .production-image-container::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%); /* ど真ん中に配置 */
+            width: 80%; height: 80%; /* 光の大きさ */
+            
+            /* 紫〜青のグラデーションの光 */
+            background: radial-gradient(circle, rgba(120, 80, 255, 0.4) 0%, rgba(0, 229, 255, 0.2) 50%, transparent 70%);
+            
+            filter: blur(40px); /* ★強くぼかして光のように見せる */
+            z-index: -1; /* ロゴの後ろへ配置 */
+            opacity: 0.8;
+        }
+
+        /* ロゴ画像自体の設定 */
+        .production-logo-img {
+            max-width: 180px; /* ロゴの大きさ調整 */
+            height: auto;
+            position: relative;
+            z-index: 2;
+            /* 画像自体にもうっすら発光エフェクト（ドロップシャドウ） */
+            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6));
+        }
+
+        /* =========================================
+           COMPANY（会社概要テーブル）
+           ========================================= */
         .company-table { width: 100%; border-collapse: collapse; }
         .company-table th, .company-table td { padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left; vertical-align: top;}
         .company-table th { width: 30%; color: #888; font-weight: normal; }
 
-        /* --- Footer --- */
+        /* =========================================
+           フッター・スマホ対応
+           ========================================= */
         footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 0.1em; }
 
-        /* --- Mobile --- */
+        /* スマホ画面（幅768px以下）用の調整 */
         @media (max-width: 768px) {
             .vision-catch { padding-left: 20px; font-size: 1.5rem; }
-            .production-card { padding: 30px; }
+            .production-card { padding: 30px; gap: 30px; }
+            .production-image-container { height: 200px; } /* スマホでは少し小さく */
             .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
             .company-table th { border: none; padding-bottom: 0; }
         }
@@ -165,7 +223,7 @@
 
     <header>
         <div class="container header-inner">
-            <div class="logo">COMPANY LOGO</div>
+            <div class="logo">GlowEngine</div>
         </div>
     </header>
 
@@ -209,8 +267,9 @@
                     </p>
                     <a href="https://flowconnectworks-coder.github.io/koyoi-production-official/" class="btn-view" target="_blank">View Official Site</a>
                 </div>
-                <div class="image-placeholder">
-                    [ Production Image ]
+                
+                <div class="production-image-container">
+                    <img src="./logo.png" alt="Koyoi Production Logo" class="production-logo-img">
                 </div>
             </div>
         </div>
@@ -229,13 +288,9 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Your Company Name. All Rights Reserved.</p>
+            <p>&copy; 2026 GlowEngine GK. All Rights Reserved.</p>
         </div>
     </footer>
 
 </body>
 </html>
-
-
-
-
