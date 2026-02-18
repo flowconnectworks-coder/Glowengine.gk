@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlowEngine合同会社 | CREATOR AGENCY</title>
     <style>
-        /* =========================================
-           基本設定・カラーパレット
-           ========================================= */
         :root { 
             --bg-color: #05070d; 
             --text-color: #f5f5f5; 
@@ -26,15 +23,11 @@
             background-attachment: fixed; 
             color: var(--text-color); 
             line-height: 1.8; 
-            -webkit-font-smoothing: antialiased; 
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         img { max-width: 100%; height: auto; display: block; }
 
-        /* =========================================
-           レイアウト共通設定
-           ========================================= */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
         .section { padding: 120px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         
@@ -49,35 +42,25 @@
             display: block; 
             font-size: 0.9rem; 
             color: #666; 
-            font-weight: 400; 
             margin-top: 5px; 
-            letter-spacing: 0.05em; 
         }
 
-        /* =========================================
-           ヘッダー
-           ========================================= */
         header { padding: 30px 0; position: absolute; width: 100%; top: 0; z-index: 100; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.2rem; font-weight: bold; letter-spacing: 0.1em; }
 
-        /* =========================================
-           HEROセクション
-           ========================================= */
-        .hero { height: 90vh; display: flex; align-items: center; position: relative;}
+        .hero { height: 90vh; display: flex; align-items: center; }
         
         .hero-title { 
             font-size: clamp(4rem, 10vw, 8rem); 
             font-weight: 900; 
             line-height: 1.05; 
-            letter-spacing: 0.02em; 
             margin: 0;
         }
         .hero-title .highlight {
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
         }
         .hero-subtitle {
             color: #aaa; 
@@ -87,16 +70,12 @@
             font-weight: bold;
         }
 
-        /* =========================================
-           VISION（企業理念）
-           ========================================= */
         .vision-container { display: flex; flex-direction: column; }
         .vision-catch {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
             line-height: 1.5;
             margin-bottom: 40px;
-            letter-spacing: 0.05em;
             border-left: 4px solid;
             border-image: var(--gradient) 1;
             padding-left: 30px;
@@ -106,17 +85,12 @@
             color: #ccc;
             line-height: 2.2;
             max-width: 800px;
-            letter-spacing: 0.05em;
         }
 
-        /* =========================================
-           BUSINESS（事業内容）
-           ★ここを調整しました★
-           ========================================= */
         .production-card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px; /* ★余白を少し詰めました（50px→40px） */
+            padding: 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -128,9 +102,9 @@
             position: relative; 
         }
         
-        .production-info { flex: 1; min-width: 300px; z-index: 2; }
-        .production-name { font-size: 2rem; font-weight: 800; margin-bottom: 15px; letter-spacing: 0.05em;}
-        .production-desc { color: #aaa; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.8; }
+        .production-info { flex: 1; min-width: 300px; }
+        .production-name { font-size: 2rem; font-weight: 800; margin-bottom: 15px;}
+        .production-desc { color: #aaa; margin-bottom: 30px; font-size: 0.95rem; }
         
         .btn-view {
             display: inline-block;
@@ -147,22 +121,18 @@
             background: var(--gradient); 
             color: #fff; 
             border-color: transparent;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); 
         }
 
-        /* --- ★ロゴ周りの設定（サイズ調整版）★ --- */
         .production-image-container {
             flex: 1; 
             min-width: 250px; 
-            height: 350px; /* ★高さを350pxに縮めました（ちょうどいいサイズ） */
+            height: 350px;
             display: flex; 
             align-items: center; 
             justify-content: center; 
             position: relative; 
-            z-index: 1;
         }
 
-        /* ロゴの後ろの光 */
         .production-image-container::before {
             content: '';
             position: absolute;
@@ -175,31 +145,22 @@
             opacity: 0.8;
         }
 
-        /* ロゴ画像 */
         .production-logo-img {
-            max-width: 320px; /* ★ロゴ自体は大きくキープ */
+            max-width: 320px;
             height: auto;
             position: relative;
             z-index: 2;
             filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.5));
         }
 
-        /* =========================================
-           COMPANY（会社概要）
-           ========================================= */
         .company-table { width: 100%; border-collapse: collapse; }
-        .company-table th, .company-table td { padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left; vertical-align: top;}
-        .company-table th { width: 30%; color: #888; font-weight: normal; }
+        .company-table th, .company-table td { padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left;}
+        .company-table th { width: 30%; color: #888; }
 
-        /* =========================================
-           フッター
-           ========================================= */
-        footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 0.1em; }
+        footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; }
 
         @media (max-width: 768px) {
-            .vision-catch { padding-left: 20px; font-size: 1.5rem; }
-            .production-card { padding: 30px; gap: 30px; }
-            .production-image-container { height: 250px; } /* スマホ用調整 */
+            .production-image-container { height: 250px; }
             .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
             .company-table th { border: none; padding-bottom: 0; }
         }
@@ -207,76 +168,72 @@
 </head>
 <body>
 
-    <header>
-        <div class="container header-inner">
-            <div class="logo">GlowEngine</div>
-        </div>
-    </header>
+<header>
+    <div class="container header-inner">
+        <div class="logo">GlowEngine</div>
+    </div>
+</header>
 
-    <section class="hero">
-        <div class="container">
-            <h1 class="hero-title">Rule The<br><span class="highlight">Internet.</span></h1>
-            <p class="hero-subtitle">インターネットの熱狂を、次の次元へ。</p>
-        </div>
-    </section>
+<section class="hero">
+    <div class="container">
+        <h1 class="hero-title">Rule The<br><span class="highlight">Internet.</span></h1>
+        <p class="hero-subtitle">インターネットの熱狂を、次の次元へ。</p>
+    </div>
+</section>
 
-    <section class="section">
-        <div class="container vision-container">
-            <h2 class="section-title">Vision<span>企業理念</span></h2>
-            
-            <h3 class="vision-catch">
-                個人の「好き」を、<br>
-                世界を動かすムーブメントへ。
-            </h3>
-            
-            <p class="vision-text">
-                誰もが発信者になれる時代。<br>
-                しかし、その才能を正しく社会に届け、継続的な価値を生み出すためには、確かな戦略とサポートが必要です。<br><br>
-                私たちは、インターネット活動を中心としたクリエイターの「やりたい」を形にするエージェンシーです。<br>
-                ただのマネジメントにとどまらず、戦略設計、案件獲得、ブランディング構築まで一気通貫で支援します<br><br>
-                常識にとらわれない発想で、新しいエンターテインメントの基準を創る。<br>
-                それが私たちの使命です。
-            </p>
-        </div>
-    </section>
+<section class="section">
+    <div class="container vision-container">
+        <h2 class="section-title">Vision<span>企業理念</span></h2>
+        <h3 class="vision-catch">
+            個人の「好き」を、<br>
+            世界を動かすムーブメントへ。
+        </h3>
+        <p class="vision-text">
+            誰もが発信者になれる時代。<br>
+            しかし、その才能を正しく社会に届け、継続的な価値を生み出すためには、確かな戦略とサポートが必要です。<br><br>
+            私たちは、インターネット活動を中心としたクリエイターの「やりたい」を形にするエージェンシーです。<br>
+            ただのマネジメントにとどまらず、戦略設計、案件獲得、ブランディング構築まで一気通貫で支援します。<br><br>
+            常識にとらわれない発想で、新しいエンターテインメントの基準を創る。<br>
+            それが私たちの使命です。
+        </p>
+    </div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Business<span>事業内容</span></h2>
-            
-            <div class="production-card">
-                <div class="production-info">
-                    <div class="production-name">こよいぷろだくしょん</div>
-                    <p class="production-desc">
-                        自社で運営するストリーマー・ライバープロダクション。<br>
-                        次世代を担う個性豊かなクリエイターのマネジメントと、配信活動のトータルサポートを行っています。
-                    </p>
-                    <a href="https://flowconnectworks-coder.github.io/koyoi-production-official/" class="btn-view" target="_blank">View Official Site</a>
-                </div>
-                
-                <div class="production-image-container">
-                    <img src="./logo.jpg" alt="Koyoi Production Logo" class="production-logo-img">
-                </div>
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Business<span>事業内容</span></h2>
+        <div class="production-card">
+            <div class="production-info">
+                <div class="production-name">こよいぷろだくしょん</div>
+                <p class="production-desc">
+                    自社で運営するストリーマー・ライバープロダクション。<br>
+                    次世代を担う個性豊かなクリエイターのマネジメントと、配信活動のトータルサポートを行っています。
+                </p>
+                <a href="https://flowconnectworks-coder.github.io/koyoi-production-official/" class="btn-view" target="_blank">View Official Site</a>
+            </div>
+            <div class="production-image-container">
+                <img src="./logo.png" alt="Koyoi Production Logo" class="production-logo-img">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Company<span>会社概要</span></h2>
-            <table class="company-table">
-                <tr><th>Company Name</th><td>GlowEngine合同会社</td></tr>
-                <tr><th>Location</th><td>〒150-0043<br>東京都渋谷区道玄坂1丁目10番8号渋谷道玄坂東急ビル2F−C</td></tr>
-                <tr><th>Contact</th><td>glowengine.gk@gmail.com</td></tr>
-            </table>
-        </div>
-    </section>
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Company<span>会社概要</span></h2>
+        <table class="company-table">
+            <tr><th>Company Name</th><td>GlowEngine合同会社</td></tr>
+            <tr><th>Location</th><td>〒150-0043<br>東京都渋谷区道玄坂1丁目10番8号渋谷道玄坂東急ビル2F−C</td></tr>
+            <tr><th>Contact</th><td>glowengine.gk@gmail.com</td></tr>
+        </table>
+    </div>
+</section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 GlowEngine GK. All Rights Reserved.</p>
-        </div>
-    </footer>
+<footer>
+    <div class="container">
+        <p>&copy; 2026 GlowEngine GK. All Rights Reserved.</p>
+    </div>
+</footer>
 
 </body>
 </html>
