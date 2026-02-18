@@ -159,44 +159,39 @@
             box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); /* ホバー時に光る */
         }
 
-        /* --- ★ロゴ周りの光るエフェクト設定★ --- */
+      /* --- ★ロゴ周りの光るエフェクト設定（サイズ修正版）★ --- */
         .production-image-container {
             flex: 1; 
             min-width: 250px; 
-            height: 300px; /* 高さ確保 */
+            height: 450px; /* ★高さを広げました */
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            position: relative; /* オーラの基準点 */
+            position: relative;
             z-index: 1;
         }
 
-        /* ロゴの後ろに「光のオーラ」を作る（疑似要素） */
+        /* ロゴの後ろに「光のオーラ」を作る */
         .production-image-container::before {
             content: '';
             position: absolute;
             top: 50%; left: 50%;
-            transform: translate(-50%, -50%); /* ど真ん中に配置 */
-            width: 80%; height: 80%; /* 光の大きさ */
-            
-            /* 紫〜青のグラデーションの光 */
+            transform: translate(-50%, -50%);
+            width: 70%; height: 70%; /* 画像が大きくなったので光の範囲を少し調整 */
             background: radial-gradient(circle, rgba(120, 80, 255, 0.4) 0%, rgba(0, 229, 255, 0.2) 50%, transparent 70%);
-            
-            filter: blur(40px); /* ★強くぼかして光のように見せる */
-            z-index: -1; /* ロゴの後ろへ配置 */
+            filter: blur(50px); /* ぼかしを少し強く */
+            z-index: -1;
             opacity: 0.8;
         }
 
         /* ロゴ画像自体の設定 */
         .production-logo-img {
-            max-width: 180px; /* ロゴの大きさ調整 */
+            max-width: 320px; /* ★画像を大きくしました */
             height: auto;
             position: relative;
             z-index: 2;
-            /* 画像自体にもうっすら発光エフェクト（ドロップシャドウ） */
-            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6));
+            filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.5)); /* 発光も少し強く */
         }
-
         /* =========================================
            COMPANY（会社概要テーブル）
            ========================================= */
@@ -294,3 +289,4 @@
 
 </body>
 </html>
+
