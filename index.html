@@ -55,7 +55,7 @@
         }
 
         /* =========================================
-           ヘッダー（ロゴサイズ調整済み）
+           ヘッダー（★ロゴと文字の距離を修正★）
            ========================================= */
         header { padding: 30px 0; position: absolute; width: 100%; top: 0; z-index: 100; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
@@ -67,13 +67,14 @@
             letter-spacing: 0.1em;
             display: flex;       
             align-items: center; 
-            gap: 10px;           
+            gap: 0px; /* ★設定上の隙間をいったん「ゼロ」にしました */
         }
         
-        /* ★ヘッダー用ミニロゴ画像のサイズ設定（大きくしました）★ */
+        /* ヘッダー用ミニロゴ画像のサイズと位置設定 */
         .header-logo-img {
-            width: 50px; /* ここを50pxに変更しました */
+            width: 50px; 
             height: auto;
+            margin-right: -10px; /* ★画像の透明な余白を打ち消すため、文字を「-10px」分だけ無理やり左に引き寄せています */
         }
 
         /* =========================================
@@ -269,7 +270,7 @@
                 </div>
                 
                 <div class="production-image-container">
-                    <img src="./logo.png" alt="Koyoi Production Logo" class="production-logo-img">
+                    <img src="./logo.jpg" alt="Koyoi Production Logo" class="production-logo-img">
                 </div>
             </div>
         </div>
