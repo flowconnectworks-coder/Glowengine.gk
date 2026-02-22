@@ -55,11 +55,26 @@
         }
 
         /* =========================================
-           ヘッダー
+           ヘッダー（★ここを調整しました★）
            ========================================= */
         header { padding: 30px 0; position: absolute; width: 100%; top: 0; z-index: 100; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.2rem; font-weight: bold; letter-spacing: 0.1em; }
+        
+        /* ロゴ部分のレイアウト */
+        .logo { 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            letter-spacing: 0.1em;
+            display: flex;       /* 画像と文字を横並びにする */
+            align-items: center; /* 上下中央揃え */
+            gap: 10px;           /* 画像と文字の間隔 */
+        }
+        
+        /* ヘッダー用ミニロゴ画像のサイズ設定 */
+        .header-logo-img {
+            width: 30px; /* サイズはお好みで調整してください（例: 40px） */
+            height: auto;
+        }
 
         /* =========================================
            HEROセクション
@@ -181,23 +196,11 @@
         }
 
         /* =========================================
-           COMPANY（会社概要）と小さなロゴ調整
+           COMPANY（会社概要）
            ========================================= */
         .company-table { width: 100%; border-collapse: collapse; }
         .company-table th, .company-table td { padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left;}
         .company-table th { width: 30%; color: #888; font-weight: normal; }
-
-        /* 会社名の横にロゴを並べるためのスタイル */
-        .company-name-cell {
-            display: flex;
-            align-items: center;
-            gap: 15px; /* ロゴと文字のすき間 */
-        }
-        .company-logo-small {
-            width: 40px; /* ここで小さなロゴのサイズを変更できます */
-            height: auto;
-            display: block;
-        }
 
         /* =========================================
            フッター
@@ -210,7 +213,6 @@
             .production-image-container { height: 250px; }
             .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
             .company-table th { border: none; padding-bottom: 0; }
-            .company-name-cell { display: flex; align-items: center; }
         }
     </style>
 </head>
@@ -218,7 +220,10 @@
 
     <header>
         <div class="container header-inner">
-            <div class="logo">GlowEngine</div>
+            <a href="#" class="logo">
+                <img src="./company_logo.png" alt="GlowEngine Logo" class="header-logo-img">
+                <span>GlowEngine</span>
+            </a>
         </div>
     </header>
 
@@ -264,7 +269,7 @@
                 </div>
                 
                 <div class="production-image-container">
-                    <img src="./logo.png" alt="Koyoi Production Logo" class="production-logo-img">
+                    <img src="./logo.jpg" alt="Koyoi Production Logo" class="production-logo-img">
                 </div>
             </div>
         </div>
@@ -274,13 +279,7 @@
         <div class="container">
             <h2 class="section-title">Company<span>会社概要</span></h2>
             <table class="company-table">
-                <tr>
-                    <th>Company Name</th>
-                    <td class="company-name-cell">
-                        <img src="./company_logo.png" alt="GlowEngine Logo" class="company-logo-small">
-                        <span>GlowEngine合同会社</span>
-                    </td>
-                </tr>
+                <tr><th>Company Name</th><td>GlowEngine合同会社</td></tr>
                 <tr><th>Location</th><td>〒150-0043<br>東京都渋谷区道玄坂1丁目10番8号渋谷道玄坂東急ビル2F−C</td></tr>
                 <tr><th>Contact</th><td>glowengine.gk@gmail.com</td></tr>
             </table>
