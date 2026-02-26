@@ -132,7 +132,7 @@
         .production-card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
+            padding: 30px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -163,12 +163,12 @@
             white-space: normal; 
         }
 
-        .production-desc { color: #aaa; margin-bottom: 30px; font-size: 0.95rem; line-height: 2.0; }
+        .production-desc { color: #aaa; margin-bottom: 0; font-size: 0.95rem; line-height: 2.0; }
 
         .production-image-container {
             flex: 1; 
             min-width: 250px; 
-            height: 350px; 
+            height: 200px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -196,9 +196,14 @@
         footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 0.1em; }
 
         /* =========================================
-           スマホ用レスポンシブ（★縦幅とレイアウトを綺麗に調整★）
+           スマホ用レスポンシブ（★余白を大幅に圧縮しました★）
            ========================================= */
         @media (max-width: 768px) {
+            /* ★ トップ画面と各セクションの無駄な余白を削る */
+            .hero { height: 65vh; } /* 90vhから65vhに短縮して間延びを防ぐ */
+            .section { padding: 60px 0; } /* 120pxあった上下の余白を半分の60pxに */
+            .section-title { margin-bottom: 40px; } /* タイトルと本文の隙間も縮小 */
+
             .hero-subtitle { 
                 font-size: clamp(0.9rem, 3.5vw, 1.2rem); 
                 letter-spacing: 0.05em; 
@@ -208,34 +213,30 @@
                 padding-left: 15px; 
                 letter-spacing: 0.02em; 
             }
-            
-            /* ★ Visionのテキストを小さくして縦幅を節約 */
             .vision-text {
                 font-size: 0.9rem;
                 line-height: 1.8;
             }
 
-            /* ★ カード内のレイアウト変更（ロゴを上に） */
             .production-card { 
                 padding: 25px 20px; 
-                gap: 10px; /* 画像と文字の隙間を縮める */
+                gap: 10px; 
                 display: flex;
-                flex-direction: column; /* 縦並びに固定 */
+                flex-direction: column; 
             }
             .production-image-container { 
-                order: -1; /* ★ 画像を一番上に持ってくる魔法 */
-                height: 100px; /* 高さをさらに圧縮 */
+                order: -1; 
+                height: 100px; 
                 min-width: 100%; 
             }
-            .production-logo-img { max-width: 160px; } /* 画像も少し小さくしてスッキリと */
+            .production-logo-img { max-width: 160px; } 
             
-            .production-desc { margin-bottom: 10px; line-height: 1.8; }
+            .production-desc { margin-bottom: 0; line-height: 1.8; }
             
             .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
             .company-table th { border: none; padding-bottom: 0; }
             .production-name { white-space: normal; } 
             
-            /* ★ スマホの時だけPC用の改行を無効化（自然に折り返させる＆空行を消す） */
             .pc-br { display: none; }
         }
     </style>
@@ -269,8 +270,10 @@
             
             <p class="vision-text">
                 誰もが発信者になれる時代。<br>
-                しかし、その才能を正しく社会に届け、継続的な価値を生み出すためには、確かな戦略とサポートが必要です。<br><br class="pc-br"> 私たちは、インターネット活動を中心としたクリエイターの「やりたい」を形にするエージェンシーです。<br>
-                ただのマネジメントにとどまらず、戦略設計、案件獲得、ブランディング構築まで一気通貫で支援します。<br><br class="pc-br"> 常識にとらわれない発想で、新しいエンターテインメントの基準を創る。<br>
+                しかし、その才能を正しく社会に届け、継続的な価値を生み出すためには、確かな戦略とサポートが必要です。<br><br class="pc-br">
+                私たちは、インターネット活動を中心としたクリエイターの「やりたい」を形にするエージェンシーです。<br>
+                ただのマネジメントにとどまらず、戦略設計、案件獲得、ブランディング構築まで一気通貫で支援します。<br><br class="pc-br">
+                常識にとらわれない発想で、新しいエンターテインメントの基準を創る。<br>
                 それが私たちの使命です。
             </p>
         </div>
