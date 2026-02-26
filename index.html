@@ -32,7 +32,7 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         img { max-width: 100%; height: auto; display: block; }
         
-        /* ★ 変な改行を防ぐ便利クラス ★ */
+        /* 変な改行を防ぐ便利クラス */
         .nowrap { white-space: nowrap; }
 
         /* =========================================
@@ -78,9 +78,8 @@
         }
 
         /* =========================================
-           HEROセクション（★中央揃えに修正★）
+           HEROセクション
            ========================================= */
-        /* text-align: center と justify-content: center で全体を真ん中に寄せます */
         .hero { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative;}
         .hero .container { width: 100%; } 
         
@@ -197,23 +196,33 @@
         footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 0.1em; }
 
         /* =========================================
-           スマホ用レスポンシブ（★綺麗に収まるよう調整★）
+           スマホ用レスポンシブ（★縦幅と改行を綺麗に調整★）
            ========================================= */
         @media (max-width: 768px) {
             .hero-subtitle { 
-                font-size: clamp(0.9rem, 3.5vw, 1.2rem); /* スマホ画面に合わせて文字を縮める */
-                letter-spacing: 0.05em; /* 文字間を詰めて1行に収める */
+                font-size: clamp(0.9rem, 3.5vw, 1.2rem); 
+                letter-spacing: 0.05em; 
             }
             .vision-catch { 
-                font-size: clamp(1.2rem, 5vw, 1.5rem); /* サイズを調整 */
+                font-size: clamp(1.2rem, 5vw, 1.5rem); 
                 padding-left: 15px; 
                 letter-spacing: 0.02em; 
             }
-            .production-card { padding: 30px; gap: 30px; }
-            .production-image-container { height: 250px; }
+            
+            /* ★ カード内の余白を詰めて縦幅を短くする */
+            .production-card { padding: 25px 20px; gap: 20px; }
+            .production-desc { margin-bottom: 15px; line-height: 1.8; }
+            
+            /* ★ 画像エリアの高さを小さくする */
+            .production-image-container { height: 160px; min-width: 100%; }
+            .production-logo-img { max-width: 200px; } /* 画像も少し小さく */
+            
             .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
             .company-table th { border: none; padding-bottom: 0; }
             .production-name { white-space: normal; } 
+            
+            /* ★ スマホの時だけPC用の改行を無効化（自然に折り返させる） */
+            .pc-br { display: none; }
         }
     </style>
 </head>
@@ -266,12 +275,11 @@
                         <span>配信者マネジメント / エージェンシー事業</span>
                     </div>
                     <p class="production-desc">
-                        配信者とのエージェンシー契約に基づき、<br>
-                        企業案件の獲得支援、条件設計、契約管理、<br>
+                        配信者とのエージェンシー契約に基づき、<br class="pc-br">
+                        企業案件の獲得支援、条件設計、契約管理、<br class="pc-br">
                         進行ディレクションまでを一貫して担当しています。<br>
-                        <br>
-                        短期的な案件成立ではなく、<br>
-                        クリエイターの市場価値を戦略的に設計し、<br>
+                        <br class="pc-br"> 短期的な案件成立ではなく、<br class="pc-br">
+                        クリエイターの市場価値を戦略的に設計し、<br class="pc-br">
                         継続的な事業基盤の構築を支援しています。
                     </p>
                 </div>
