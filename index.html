@@ -196,7 +196,7 @@
         footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 0.1em; }
 
         /* =========================================
-           スマホ用レスポンシブ（★縦幅と改行を綺麗に調整★）
+           スマホ用レスポンシブ（★縦幅とレイアウトを綺麗に調整★）
            ========================================= */
         @media (max-width: 768px) {
             .hero-subtitle { 
@@ -209,19 +209,33 @@
                 letter-spacing: 0.02em; 
             }
             
-            /* ★ カード内の余白を詰めて縦幅を短くする */
-            .production-card { padding: 25px 20px; gap: 20px; }
-            .production-desc { margin-bottom: 15px; line-height: 1.8; }
+            /* ★ Visionのテキストを小さくして縦幅を節約 */
+            .vision-text {
+                font-size: 0.9rem;
+                line-height: 1.8;
+            }
+
+            /* ★ カード内のレイアウト変更（ロゴを上に） */
+            .production-card { 
+                padding: 25px 20px; 
+                gap: 10px; /* 画像と文字の隙間を縮める */
+                display: flex;
+                flex-direction: column; /* 縦並びに固定 */
+            }
+            .production-image-container { 
+                order: -1; /* ★ 画像を一番上に持ってくる魔法 */
+                height: 100px; /* 高さをさらに圧縮 */
+                min-width: 100%; 
+            }
+            .production-logo-img { max-width: 160px; } /* 画像も少し小さくしてスッキリと */
             
-            /* ★ 画像エリアの高さを小さくする */
-            .production-image-container { height: 160px; min-width: 100%; }
-            .production-logo-img { max-width: 200px; } /* 画像も少し小さく */
+            .production-desc { margin-bottom: 10px; line-height: 1.8; }
             
             .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
             .company-table th { border: none; padding-bottom: 0; }
             .production-name { white-space: normal; } 
             
-            /* ★ スマホの時だけPC用の改行を無効化（自然に折り返させる） */
+            /* ★ スマホの時だけPC用の改行を無効化（自然に折り返させる＆空行を消す） */
             .pc-br { display: none; }
         }
     </style>
@@ -255,10 +269,8 @@
             
             <p class="vision-text">
                 誰もが発信者になれる時代。<br>
-                しかし、その才能を正しく社会に届け、継続的な価値を生み出すためには、確かな戦略とサポートが必要です。<br><br>
-                私たちは、インターネット活動を中心としたクリエイターの「やりたい」を形にするエージェンシーです。<br>
-                ただのマネジメントにとどまらず、戦略設計、案件獲得、ブランディング構築まで一気通貫で支援します。<br><br>
-                常識にとらわれない発想で、新しいエンターテインメントの基準を創る。<br>
+                しかし、その才能を正しく社会に届け、継続的な価値を生み出すためには、確かな戦略とサポートが必要です。<br><br class="pc-br"> 私たちは、インターネット活動を中心としたクリエイターの「やりたい」を形にするエージェンシーです。<br>
+                ただのマネジメントにとどまらず、戦略設計、案件獲得、ブランディング構築まで一気通貫で支援します。<br><br class="pc-br"> 常識にとらわれない発想で、新しいエンターテインメントの基準を創る。<br>
                 それが私たちの使命です。
             </p>
         </div>
@@ -278,7 +290,8 @@
                         配信者とのエージェンシー契約に基づき、<br class="pc-br">
                         企業案件の獲得支援、条件設計、契約管理、<br class="pc-br">
                         進行ディレクションまでを一貫して担当しています。<br>
-                        <br class="pc-br"> 短期的な案件成立ではなく、<br class="pc-br">
+                        <br class="pc-br">
+                        短期的な案件成立ではなく、<br class="pc-br">
                         クリエイターの市場価値を戦略的に設計し、<br class="pc-br">
                         継続的な事業基盤の構築を支援しています。
                     </p>
