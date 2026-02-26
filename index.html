@@ -31,6 +31,9 @@
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         img { max-width: 100%; height: auto; display: block; }
+        
+        /* ★ 変な改行を防ぐ便利クラス ★ */
+        .nowrap { white-space: nowrap; }
 
         /* =========================================
            レイアウト共通設定
@@ -75,9 +78,11 @@
         }
 
         /* =========================================
-           HEROセクション
+           HEROセクション（★中央揃えに修正★）
            ========================================= */
-        .hero { height: 90vh; display: flex; align-items: center; position: relative;}
+        /* text-align: center と justify-content: center で全体を真ん中に寄せます */
+        .hero { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative;}
+        .hero .container { width: 100%; } 
         
         .hero-title { 
             font-size: clamp(4rem, 10vw, 8rem); 
@@ -142,14 +147,13 @@
         
         .production-info { flex: 1; min-width: 300px; z-index: 2; }
         
-        /* ★事業名（1行に収まるように文字サイズと字間を調整）★ */
         .production-name { 
-            font-size: clamp(1.2rem, 3.5vw, 1.5rem); /* サイズを少し小さくし、画面幅に合わせて縮むように */
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem); 
             font-weight: 800; 
             margin-bottom: 20px; 
-            letter-spacing: 0.02em; /* 字間を少し詰める */
+            letter-spacing: 0.02em; 
             line-height: 1.3;
-            white-space: nowrap; /* 強制的に1行にする */
+            white-space: nowrap; 
         }
         .production-name span {
             display: block;
@@ -157,12 +161,11 @@
             color: var(--accent);
             margin-top: 5px;
             font-weight: bold;
-            white-space: normal; /* 日本語部分は折り返しを許可 */
+            white-space: normal; 
         }
 
         .production-desc { color: #aaa; margin-bottom: 30px; font-size: 0.95rem; line-height: 2.0; }
 
-        /* 画像エリアの設定（光るエフェクトを削除） */
         .production-image-container {
             flex: 1; 
             min-width: 250px; 
@@ -179,7 +182,6 @@
             height: auto;
             position: relative;
             z-index: 2;
-            /* ★ 発光エフェクト（drop-shadow）を削除しました */
         }
 
         /* =========================================
@@ -194,14 +196,23 @@
            ========================================= */
         footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 0.1em; }
 
+        /* =========================================
+           スマホ用レスポンシブ（★綺麗に収まるよう調整★）
+           ========================================= */
         @media (max-width: 768px) {
-            .vision-catch { padding-left: 20px; font-size: 1.5rem; }
+            .hero-subtitle { 
+                font-size: clamp(0.9rem, 3.5vw, 1.2rem); /* スマホ画面に合わせて文字を縮める */
+                letter-spacing: 0.05em; /* 文字間を詰めて1行に収める */
+            }
+            .vision-catch { 
+                font-size: clamp(1.2rem, 5vw, 1.5rem); /* サイズを調整 */
+                padding-left: 15px; 
+                letter-spacing: 0.02em; 
+            }
             .production-card { padding: 30px; gap: 30px; }
             .production-image-container { height: 250px; }
             .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
             .company-table th { border: none; padding-bottom: 0; }
-            
-            /* スマホで横幅が足りない時は折り返しを許可 */
             .production-name { white-space: normal; } 
         }
     </style>
@@ -220,7 +231,7 @@
     <section class="hero">
         <div class="container">
             <h1 class="hero-title">Rule The<br><span class="highlight">Internet.</span></h1>
-            <p class="hero-subtitle">インターネットの熱狂を、次の次元へ。</p>
+            <p class="hero-subtitle">インターネットの熱狂を、<span class="nowrap">次の次元へ。</span></p>
         </div>
     </section>
 
@@ -230,7 +241,7 @@
             
             <h3 class="vision-catch">
                 個人の「好き」を、<br>
-                世界を動かすムーブメントへ。
+                世界を動かす<span class="nowrap">ムーブメントへ。</span>
             </h3>
             
             <p class="vision-text">
